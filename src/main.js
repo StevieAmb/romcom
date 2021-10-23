@@ -21,16 +21,35 @@ var viewForm = document.querySelector('.view.form-view.hidden');
 var homeView = document.querySelector('.view.home-view');
 var viewSavedCoversView = document.querySelector('.view.saved-view.hidden');
 
+homeButton.addEventListener('click', showHomeView);
+makeNewCoverButton.addEventListener('click', showFormView);
+viewSavedButton.addEventListener('click', showSavedView)
 
+function showHomeView() {
+  saveCoverButton.classList.remove('hidden');
+  homeButton.classList.add('hidden');
+  randomButton.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  viewSavedCoversView.classList.add('hidden');
+  viewForm.classList.add('hidden');
+}
 
-makeNewCoverButton.addEventListener('click', showViewForm);
-
-function showViewForm() {
+function showSavedView() {
+  saveCoverButton.classList.add('hidden');
+  randomButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-  viewForm.classList.remove('hidden');
   homeView.classList.add('hidden');
+  viewSavedCoversView.classList.remove('hidden');
+  viewForm.classList.add('hidden');
+}
+
+function showFormView() {
+  homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
+  viewForm.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  viewSavedCoversView.classList.add('hidden');
 }
 
 console.log(viewForm.classList.remove('.hidden'));
@@ -41,28 +60,17 @@ console.log(viewForm.classList.remove('.hidden'));
 
 
 //PSEUDOCODE
-//Time 1 -
-//When user clicks Make Your Own Cover button, the Home view is hidden, which means we don't use pageLoad,
-//and we also activate the form.
-//
-//When the Form view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
 //Time 2 -
 //
+//Time 3 -
+//on pages that aren't the HopePageView, we are creating an addEventListener
+//from the home button to the HomePage
 
 
 
 
 //PROJECT DIRECTIONS
 // NOTE: in this iteration, you are not worrying about making the form WORK, and you are not worrying about saving or displaying covers. You simply want to make sure the views can be switched when you click the appropriate buttons.
-//
-// Form view:
-// When the Form view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
-// When the Form view is visible, the “Home” button should be visible
-//
-//
-// When the Saved Covers view is visible, the “Show New Random Cover” and “Save Cover” buttons should be hidden
-// When the Saved Covers view is visible, the “Home” button should be visible
-// For both the Make New Cover form section and the Saved Covers section:
 //
 // In summary: Be able to switch between the three views (main poster, form, and saved posters) on the correct button clicks
 // When a user clicks the “Home” button, we should only see the Home section
