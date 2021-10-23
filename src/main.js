@@ -38,6 +38,22 @@ var inputDescriptor2 = document.querySelector('.user-desc2');
 
 var createBookButton = document.querySelector('.create-new-book-button');
 
+// Event Listeners
+//We need 5.
+//
+inputCover.addEventListener('keyup', )
+
+function changeMainPage() {
+  image.src = inputCover.value;
+  bookTitle.innerText = inputTitle.value;
+  descriptor1.innerText =
+}
+
+inputTitle.addEventListener('keyup', )
+inputDescriptor1.addEventListener('keyup', );
+inputDescriptor1.addEventListener('keyup', );
+
+createBookButton.addEventListener('click', )
 
 
 
