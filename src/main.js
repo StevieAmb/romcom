@@ -23,7 +23,7 @@
 //FUNCTIONS
 //take in input from the boxes and store them somewhere
 //functions also need to the push the data into the respective arrays
-//we can user userStorage as argument
+//
 //the function needs to change the page when the button is clicked
 //shoot the user cover (which is the userCover, userTitle, userDecs 1 & 2)
 //to the main page.
@@ -59,11 +59,12 @@ var savedCovers = [
 console.log(inputCover.value);
 
 
-// inputTitle.addEventListener('keyup', );
-// inputDescriptor1.addEventListener('keyup', );
-// inputDescriptor1.addEventListener('keyup', );
-//
-// createBookButton.addEventListener('click', );
+inputTitle.addEventListener('keyup',  );
+
+inputDescriptor1.addEventListener('keyup', );
+
+inputDescriptor1.addEventListener('keyup', );
+
 
 
 
