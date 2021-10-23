@@ -28,10 +28,11 @@
 //shoot the user cover (which is the userCover, userTitle, userDecs 1 & 2)
 //to the main page.
 
-var userCover = covers[covers.length -1];
-var userTitle = titles[titles.length -1];
-var userDescr1 = descriptors[descriptors.length - 2];
-var userDescr2 = descriptors[descriptors.length - 1];
+// var userTitle = titles[titles.length -1];
+// var userDescr1 = descriptors[descriptors.length - 2];
+// var userDescr2 = descriptors[descriptors.length - 1];
+
+//MAKE FORM PAGE VARIABLES
 var inputCover = document.querySelector('.user-cover');
 var inputTitle = document.querySelector('.user-title');
 var inputDescriptor1 = document.querySelector('.user-desc1');
@@ -42,33 +43,60 @@ var createBookButton = document.querySelector('.create-new-book-button');
 // Event Listeners
 //We need 5.
 //
+inputCover.addEventListener('keyup', pushUserCover);
+inputTitle.addEventListener('keyup', pushUserTitle);
+inputDescriptor1.addEventListener('keyup', pushDescriptor1);
+inputDescriptor2.addEventListener('keyup', pushDescriptor2);
+
+function pushUserCover() {
+  var userCover = inputCover.value;
+  covers.push(userCover);
+  console.log(userCover);
+}// This function takes in a value in a input box and pushes the value into
+//the covers array.
+
+function pushUserTitle() {
+  var userTitle = inputTitle.value;
+  titles.push(userTitle);
+  console.log(userTitle);
+}// This function takes in a value in a input box and pushes the value into
+//the titles array.
+
+
+function pushDescriptor1() {
+  var userDescr1 = inputDescriptor1.value;
+  descriptors.push(userDescr1);
+  console.log(userDescr1);
+}// This function takes in a value in a input box and pushes the value into
+//the descriptors array (the second to last indexed item).
+
+function pushDescriptor2() {
+  var userDescr2 = inputDescriptor2.value;
+  descriptors.push(userDescr2);
+  console.log(userDescr2);
+}// This function takes in a value in a input box and pushes the value into
+//the descriptors array.
+
 createBookButton.addEventListener('click', collectInputs);
 
+
+
 function collectInputs() {
-covers.push(inputCover.value);
-titles.push(inputTitle.value);
-descriptors.push(inputDescriptor1.value);
-descriptors.push(inputDescriptor2.value);
-image.src = savedCovers.cover;
-bookTitle.innerText = savedCovers.title;
-descriptor1.innerText = savedCovers.tagline1;
-descriptor2.innerText = savedCovers.tagline2;
+  window.removeEventListener("click", pageLoad);
+  userCover = covers[covers.length - 1];
+  userTitle = titles[titles.length - 1];
+  userDescr1 = descriptors[descriptors.length - 2];
+  userDescr2 = descriptors[descriptors.length - 1];
 var savedCovers = [
   new Cover(userCover, userTitle, userDescr1, userDescr2)];
+image.src = savedCovers[0].cover;
+bookTitle.innerText = savedCovers[0].title;
+descriptor1.innerText = savedCovers[0].tagline1;
+descriptor2.innerText = savedCovers[0].tagline2;
+
+
+  console.log(userCover, userTitle, userDescr1, userDescr2);
 }
-console.log(inputCover.value);
-
-
-inputTitle.addEventListener('keyup',  );
-
-inputDescriptor1.addEventListener('keyup', );
-
-inputDescriptor1.addEventListener('keyup', );
-
-
-
-
-
 
 
 
@@ -136,8 +164,8 @@ function pageLoad() { //assigns randomized images, titles, descriptors to variab
  }
 
 
-var savedCovers = [
-new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
+// var savedCovers = [
+// new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
 //var currentCover;
 //
 // // Add your event listeners here 👇
