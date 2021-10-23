@@ -11,17 +11,6 @@
 //we need to capture data in input fields
 //when user hits the Make My Book button
 
-// <form>
-//   <label for="cover">Cover</label>
-//   <input class="user-cover" type="text" id="cover" />
-//   <label for="title">Title</label>
-//   <input class="user-title" type="text" id="title">
-//   <label for="descriptor1">First descriptor</label>
-//   <input class="user-desc1" type="text" id="descriptor1" />
-//   <label for="descriptor2">Second descriptor</label>
-//   <input class="user-desc2" type="text" id="descriptor2" />
-//   <button class="create-new-book-button">Make my book</button>
-// </form>
 
 // Materials
 //The four input fields - 4 fields
@@ -31,6 +20,18 @@
 
 //put the input.value in a variable, that's how we store it.
 
+//FUNCTIONS
+//take in input from the boxes and store them somewhere
+//functions also need to the push the data into the respective arrays
+//we can user userStorage as argument
+//the function needs to change the page when the button is clicked
+//shoot the user cover (which is the userCover, userTitle, userDecs 1 & 2)
+//to the main page.
+
+var userCover = covers[covers.length -1];
+var userTitle = titles[titles.length -1];
+var userDescr1 = descriptors[descriptors.length - 2];
+var userDescr2 = descriptors[descriptors.length - 1];
 var inputCover = document.querySelector('.user-cover');
 var inputTitle = document.querySelector('.user-title');
 var inputDescriptor1 = document.querySelector('.user-desc1');
@@ -41,19 +42,28 @@ var createBookButton = document.querySelector('.create-new-book-button');
 // Event Listeners
 //We need 5.
 //
-inputCover.addEventListener('keyup', )
+createBookButton.addEventListener('click', collectInputs);
 
-function changeMainPage() {
-  image.src = inputCover.value;
-  bookTitle.innerText = inputTitle.value;
-  descriptor1.innerText =
+function collectInputs() {
+covers.push(inputCover.value);
+titles.push(inputTitle.value);
+descriptors.push(inputDescriptor1.value);
+descriptors.push(inputDescriptor2.value);
+image.src = savedCovers.cover;
+bookTitle.innerText = savedCovers.title;
+descriptor1.innerText = savedCovers.tagline1;
+descriptor2.innerText = savedCovers.tagline2;
+var savedCovers = [
+  new Cover(userCover, userTitle, userDescr1, userDescr2)];
 }
+console.log(inputCover.value);
 
-inputTitle.addEventListener('keyup', )
-inputDescriptor1.addEventListener('keyup', );
-inputDescriptor1.addEventListener('keyup', );
 
-createBookButton.addEventListener('click', )
+// inputTitle.addEventListener('keyup', );
+// inputDescriptor1.addEventListener('keyup', );
+// inputDescriptor1.addEventListener('keyup', );
+//
+// createBookButton.addEventListener('click', );
 
 
 
