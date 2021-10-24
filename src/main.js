@@ -58,25 +58,21 @@ document.onload = pageLoad();
 //window.onload = pageLoad();
 homeButton.addEventListener('click', showHomeView);
 makeNewCoverButton.addEventListener('click', showFormView);
-viewSavedButton.addEventListener('click', showSavedView)
+viewSavedButton.addEventListener('click', showSavedView);
 createBookButton.addEventListener('click', makeUserCover);
 saveCoverButton.addEventListener('click', saveCover);
 
 function saveCover(){
   makeUserCover();
-  savedCovers.push(currentCover);
-  image.src = savedCovers[0].cover;
-  bookTitle.innerText= savedCovers[0].title;
-  descriptor1.innerText = savedCovers[0].tagline1;
-  descriptor2.innerText = savedCovers[0].tagline2;
-  console.log(bookTitle);
   for (var i = 0; i <savedCovers.length; i++) {
   viewSavedCoversView.innerHTML =
-  `<img class="cover-image" src="${savedCovers[i].cover}">
+  `<section class="mini-cover">
+  <img class="cover-image" src="${savedCovers[i].cover}">
   <h2 class="cover-title">${savedCovers[i].title}</h2>
   <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-
-  `;}
+  </section>`;
+  savedCovers.push(currentCover);
+  }
   showSavedView();
 }
 
