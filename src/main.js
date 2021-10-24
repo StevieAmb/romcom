@@ -1,36 +1,4 @@
-// ITERATION 3
-// Step 1 - In the new cover form view, users should be able to fill out the four input fields and then hit the Make My Book button
-// When the Make My Book button is clicked, several things will happen:
-// Save the submitted data into the respective arrays (cover URL into the covers array, title string into the titles array, etc) so that future random covers can use the user-created data
-// Use the values from the inputs to create a new instance of the Cover class
-// Change back to the main home view (hiding the form view again)
-// Display the newly created cover image, title, and descriptors in the main cover
 
-
-// Step 1 -
-//we need to capture data in input fields
-//when user hits the Make My Book button
-
-
-// Materials
-//The four input fields - 4 fields
-//an event listeners
-//function that happens when we hit the button.
-//Make My Book Button - mat
-
-//put the input.value in a variable, that's how we store it.
-
-//FUNCTIONS
-//take in input from the boxes and store them somewhere
-//functions also need to the push the data into the respective arrays
-//
-//the function needs to change the page when the button is clicked
-//shoot the user cover (which is the userCover, userTitle, userDecs 1 & 2)
-//to the main page.
-
-// var userTitle = titles[titles.length -1];
-// var userDescr1 = descriptors[descriptors.length - 2];
-// var userDescr2 = descriptors[descriptors.length - 1];
 
 //MAKE FORM PAGE VARIABLES
 var inputCover = document.querySelector('.user-cover');
