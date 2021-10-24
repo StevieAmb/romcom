@@ -31,22 +31,24 @@ var inputTitle = document.querySelector('.user-title');
 var inputDescriptor1 = document.querySelector('.user-desc1');
 var inputDescriptor2 = document.querySelector('.user-desc2');
 
-
+//HTML ELEMENT GRABS
 var image = document.querySelector('.cover-image');
 var bookTitle = document.querySelector('.cover-title');
 var descriptor1 = document.querySelector('.tagline-1');
 var descriptor2 = document.querySelector('.tagline-2');
 
-var createBookButton = document.querySelector('.create-new-book-button');
+//BUTTON GRABS
+var makeMyBookButton = document.querySelector('.create-new-book-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
-var saveCoverButton = document.querySelector('.save-cover-button');
+var saveButton = document.querySelector('.save-cover-button');
 var randomButton = document.querySelector('.random-cover-button');
-var makeNewCoverButton = document.querySelector('.make-new-button');
+var makeYourOwnCoverButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button.hidden');
 
-var viewForm = document.querySelector('.view.form-view.hidden');
-var homeView = document.querySelector('.view.home-view');
-var viewSavedCoversView = document.querySelector('.view.saved-view.hidden');
+//FORM GRABS
+var formPage = document.querySelector('.view.form-view.hidden');
+var homePage = document.querySelector('.view.home-view');
+var displaySavedCoversPage = document.querySelector('.view.saved-view.hidden');
 
 
 // Event Listeners
@@ -56,26 +58,42 @@ randomButton.addEventListener('click', pageLoad);
 //document.addEventListener('DOMContentLoaded', pageLoad);
 document.onload = pageLoad();
 //window.onload = pageLoad();
-homeButton.addEventListener('click', showHomeView);
-makeNewCoverButton.addEventListener('click', showFormView);
-viewSavedButton.addEventListener('click', showSavedView);
-createBookButton.addEventListener('click', makeUserCover);
-saveCoverButton.addEventListener('click', saveCover);
 
-function saveCover(){
+//TAKES US BACK TO HOME VIEW (journey)
+homeButton.addEventListener('click', showHomeView);
+
+//TAKES YOU TO THE FORMPAGE (journey)
+makeYourOwnCoverButton.addEventListener('click', showFormView);
+
+//DISPLAYS THE USERS SAVED COVERS  (action & journey)
+viewSavedButton.addEventListener('click', showSavedView);
+
+//MAKING USER COVER (action)
+makeMyBookButton.addEventListener('click', makeUserCover);
+
+//ACTION W/E (action)
+saveButton.addEventListener('click', showCover);
+
+function displaySavedCover() {
+//show the displayed images (in the savedCoversArray);
+//but all next to each other.
+}
+
+
+function showCover(){
   makeUserCover();
   for (var i = 0; i <savedCovers.length; i++) {
-  viewSavedCoversView.innerHTML =
+  displaySavedCoversPage.innerHTML =
   `<section class="mini-cover">
   <img class="cover-image" src="${savedCovers[i].cover}">
   <h2 class="cover-title">${savedCovers[i].title}</h2>
   <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
   </section>`;
-  savedCovers.push(currentCover);
   }
-  showSavedView();
+  savedCovers.push(currentCover);
 }
 
+//
 function pushUserInput() {
   covers.push(inputCover.value);
   titles.push(inputTitle.value);
@@ -96,30 +114,30 @@ showHomeView();
 }
 
 function showHomeView() { //shows the form view
-  saveCoverButton.classList.remove('hidden');
+  saveButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
   randomButton.classList.remove('hidden');
-  homeView.classList.remove('hidden');
-  viewSavedCoversView.classList.add('hidden');
-  viewForm.classList.add('hidden');
+  homePage.classList.remove('hidden');
+  displaySavedCoversPage.classList.add('hidden');
+  formPage.classList.add('hidden');
 }
 
 function showSavedView() { //shows the saved view covers form
-  saveCoverButton.classList.add('hidden');
+  saveButton.classList.add('hidden');
   randomButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  viewSavedCoversView.classList.remove('hidden');
-  viewForm.classList.add('hidden');
+  homePage.classList.add('hidden');
+  displaySavedCoversPage.classList.remove('hidden');
+  formPage.classList.add('hidden');
 }
 
 function showFormView() { //shows the view of the form
   homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  viewForm.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  viewSavedCoversView.classList.add('hidden');
+  saveButton.classList.add('hidden');
+  formPage.classList.remove('hidden');
+  homePage.classList.add('hidden');
+  displaySavedCoversPage.classList.add('hidden');
 }
 
 function pageLoad() { //assigns randomized images, titles, descriptors to variables that hold HTML elements
