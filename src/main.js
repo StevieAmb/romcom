@@ -43,59 +43,29 @@ var createBookButton = document.querySelector('.create-new-book-button');
 // Event Listeners
 //We need 5.
 //
-inputCover.addEventListener('keyup', pushUserCover);
-inputTitle.addEventListener('keyup', pushUserTitle);
-inputDescriptor1.addEventListener('keyup', pushDescriptor1);
-inputDescriptor2.addEventListener('keyup', pushDescriptor2);
 
-function pushUserCover() {
-  var userCover = inputCover.value;
-  covers.push(userCover);
-  console.log(userCover);
+createBookButton.addEventListener('click', makeUserCover);
+
+function pushUserInput() {
+  covers.push(inputCover.value);
+  titles.push(inputTitle.value);
+  descriptors.push(inputDescriptor1.value);
+  descriptors.push(inputDescriptor2.value);
 }// This function takes in a value in a input box and pushes the value into
 //the covers array.
 
-function pushUserTitle() {
-  var userTitle = inputTitle.value;
-  titles.push(userTitle);
-  console.log(userTitle);
-}// This function takes in a value in a input box and pushes the value into
-//the titles array.
 
+function makeUserCover() {
+event.preventDefault();
+currentCover = new Cover(image.src, bookTitle.innerText, descriptor1.innerText, descriptor2.innerText);
+pushUserInput();
 
-function pushDescriptor1() {
-  var userDescr1 = inputDescriptor1.value;
-  descriptors.push(userDescr1);
-  console.log(userDescr1);
-}// This function takes in a value in a input box and pushes the value into
-//the descriptors array (the second to last indexed item).
+image.src = inputCover.value;
+bookTitle.innerText = inputTitle.value;
+descriptor1.innerText = inputDescriptor1.value;
+descriptor2.innerText = inputDescriptor2.value;
+showHomeView();
 
-function pushDescriptor2() {
-  var userDescr2 = inputDescriptor2.value;
-  descriptors.push(userDescr2);
-  console.log(userDescr2);
-}// This function takes in a value in a input box and pushes the value into
-//the descriptors array.
-
-createBookButton.addEventListener('click', collectInputs);
-
-
-
-function collectInputs() {
-  window.removeEventListener("click", pageLoad);
-  userCover = covers[covers.length - 1];
-  userTitle = titles[titles.length - 1];
-  userDescr1 = descriptors[descriptors.length - 2];
-  userDescr2 = descriptors[descriptors.length - 1];
-var savedCovers = [
-  new Cover(userCover, userTitle, userDescr1, userDescr2)];
-image.src = savedCovers[0].cover;
-bookTitle.innerText = savedCovers[0].title;
-descriptor1.innerText = savedCovers[0].tagline1;
-descriptor2.innerText = savedCovers[0].tagline2;
-
-
-  console.log(userCover, userTitle, userDescr1, userDescr2);
 }
 
 
@@ -116,16 +86,16 @@ var homeView = document.querySelector('.view.home-view');
 var viewSavedCoversView = document.querySelector('.view.saved-view.hidden');
 
 randomButton.addEventListener('click', pageLoad);
-window.addEventListener('load', pageLoad);
+//window.addEventListener('load', pageLoad);
 //RANDOMIZE COVER WITH BUTTON
 //document.addEventListener('DOMContentLoaded', pageLoad);
- //document.onload = pageLoad();
+ document.onload = pageLoad();
  //window.onload = pageLoad();
 homeButton.addEventListener('click', showHomeView);
 makeNewCoverButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', showSavedView)
 
-function showHomeView() {
+function showHomeView() { //shows the form view
   saveCoverButton.classList.remove('hidden');
   homeButton.classList.add('hidden');
   randomButton.classList.remove('hidden');
@@ -134,7 +104,7 @@ function showHomeView() {
   viewForm.classList.add('hidden');
 }
 
-function showSavedView() {
+function showSavedView() { //shows the saved view covers form
   saveCoverButton.classList.add('hidden');
   randomButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
@@ -143,7 +113,7 @@ function showSavedView() {
   viewForm.classList.add('hidden');
 }
 
-function showFormView() {
+function showFormView() { //shows the view of the form
   homeButton.classList.remove('hidden');
   randomButton.classList.add('hidden');
   saveCoverButton.classList.add('hidden');
