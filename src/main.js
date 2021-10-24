@@ -43,11 +43,11 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 var saveButton = document.querySelector('.save-cover-button');
 var randomButton = document.querySelector('.random-cover-button');
 var makeYourOwnCoverButton = document.querySelector('.make-new-button');
-var homeButton = document.querySelector('.home-button.hidden');
+var homeButton = document.querySelector('.home-button');
 
 //FORM GRABS
-var formPage = document.querySelector('.view.form-view.hidden');
-var homePage = document.querySelector('.view.home-view');
+var formPage = document.querySelector('.form-view');
+var homePage = document.querySelector('.home-view');
 var displaySavedCoversPage = document.querySelector('.view.saved-view.hidden');
 
 
@@ -66,7 +66,7 @@ homeButton.addEventListener('click', showHomeView);
 makeYourOwnCoverButton.addEventListener('click', showFormView);
 
 //DISPLAYS THE USERS SAVED COVERS  (action & journey)
-viewSavedButton.addEventListener('click', showSavedView);
+viewSavedButton.addEventListener('click', displaySavedCover);
 
 //MAKING USER COVER (action)
 makeMyBookButton.addEventListener('click', makeUserCover);
@@ -74,23 +74,37 @@ makeMyBookButton.addEventListener('click', makeUserCover);
 //ACTION W/E (action)
 saveButton.addEventListener('click', showCover);
 
-function displaySavedCover() {
-//show the displayed images (in the savedCoversArray);
-//but all next to each other.
-}
+var savedCovers = [
+ new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")];
+//var currentCover;
 
+function displaySavedCover() {
+displaySavedCoversPage.innerHTML = ""
+for (var i = 0; i <savedCovers.length; i++) {
+displaySavedCoversPage.innerHTML +=
+`<section class="mini-cover">
+<img class="cover-image" src="${savedCovers[i].cover}">
+<h2 class="cover-title">${savedCovers[i].title}</h2>
+<h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+</section>`
+}
+showSavedView();
+
+}
 
 function showCover(){
   makeUserCover();
+  var covers;
   for (var i = 0; i <savedCovers.length; i++) {
   displaySavedCoversPage.innerHTML =
   `<section class="mini-cover">
   <img class="cover-image" src="${savedCovers[i].cover}">
   <h2 class="cover-title">${savedCovers[i].title}</h2>
   <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
-  </section>`;
+  </section>'`
   }
   savedCovers.push(currentCover);
+  console.log(savedCovers);
 }
 
 //
