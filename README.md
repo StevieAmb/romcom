@@ -65,9 +65,13 @@ You'll be able to delete a book cover you no longer want, and in the the further
 ## Credits
 1. Alice Rupert
 1. August Reid
+1. Ricardo Tover
 1. Alex Fritz
 1. Richard RoseSerrano
 1. Emma Chory
 1. Phil Lewis
 1. The rock-and-pebble channel
 1. Google
+
+### Want to see our project
+Find our spec [HERE](https://frontend.turing.io/projects/module-1/romcom-pair.html)
