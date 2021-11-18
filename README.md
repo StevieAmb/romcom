@@ -1,7 +1,7 @@
 # RomCom Paired Project
 
 ## Description
-[This](https://fordo29.github.io/romcom/) website let's you create YOUR fantasy book cover. Is there a romance novel you want to read, you can see the cover page in your head, but no one's written it? You can take the future of the romance book genre into YOUR OWN hands, with this website!
+[This](https://stevieamb.github.io/romcom/) website let's you create YOUR fantasy book cover. Is there a romance novel you want to read, you can see the cover page in your head, but no one's written it? You can take the future of the romance book genre into YOUR OWN hands, with this website!
 
 This paired project was designed to push our understanding of how to work successfully in a pair. This required to look within ourselves and notice our blockages in regards to working in pairs, and engaging in continuously dialogue to work through our blockages.
 
