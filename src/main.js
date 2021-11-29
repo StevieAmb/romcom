@@ -29,20 +29,27 @@ var savedCovers = [
 
 
 // EVENT HANDLER
-document.onload = pageLoad();
-
-
-// // Add your event listeners here 👇
-randomButton.addEventListener('click', pageLoad);
-homeButton.addEventListener('click', showHomeView);
-makeYourOwnCoverButton.addEventListener('click', showFormView);
-viewSavedButton.addEventListener('click', displaySavedCover);
-makeMyBookButton.addEventListener('click', makeUserCover);
-saveButton.addEventListener('click', showCover);
 
 
 //  Add your functions here 👇
-function displaySavedCover() {
+let getRandomIndex = (array => Math.floor(Math.random() * array.length));
+
+const show = (elements) => {
+  elements.forEach(element => element.classList.remove('hidden'));
+}
+
+const hide = (elements) => {
+  elements.forEach(element => element.classList.add('hidden'));
+}
+
+const pageLoad = () => {
+  image.src = covers[getRandomIndex(covers)];
+  bookTitle.innerText = titles[getRandomIndex(titles)];
+  descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
+  descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
+}
+
+const displaySavedCover = () => {
   displaySavedCoversPage.innerHTML = ""
   for (var i = 0; i <savedCovers.length; i++) {
     displaySavedCoversPage.innerHTML +=
@@ -52,77 +59,65 @@ function displaySavedCover() {
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     </section>`
   }
-
   showSavedView();
 }
 
-function showCover(){
+const showCover = () => {
   makeUserCover();
-  for (var i = 0; i <savedCovers.length; i++) {
+  savedCovers.forEach(savedCover => {
     displaySavedCoversPage.innerHTML +=
     `<section class="mini-cover">
-    <img class="cover-image" src="${savedCovers[i].cover}">
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="cover-image" src="${savedCovers.cover}">
+    <h2 class="cover-title">${savedCovers.title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers.tagline1}</span> and <span class="tagline-2">${savedCovers.tagline2}</span></h3>
     </section>'`
-  }
-
+  });
   savedCovers.push(currentCover);
   console.log(savedCovers);
+  pageLoad();
 }
 
-function pushUserInput() {
+const pushUserInput = () => {
   covers.push(inputCover.value);
   titles.push(inputTitle.value);
   descriptors.push(inputDescriptor1.value);
   descriptors.push(inputDescriptor2.value);
 }
 
-function makeUserCover() {
+const makeUserCover = () => {
   event.preventDefault();
-  currentCover = new Cover(image.src, bookTitle.innerText, descriptor1.innerText, descriptor2.innerText);
   pushUserInput();
   image.src = inputCover.value;
   bookTitle.innerText = inputTitle.value;
   descriptor1.innerText = inputDescriptor1.value;
   descriptor2.innerText = inputDescriptor2.value;
+  currentCover = new Cover(image.src, bookTitle.innerText, descriptor1.innerText, descriptor2.innerText);
   showHomeView();
 }
 
-function showHomeView() {
-  saveButton.classList.remove('hidden');
-  homeButton.classList.add('hidden');
-  randomButton.classList.remove('hidden');
-  homePage.classList.remove('hidden');
-  displaySavedCoversPage.classList.add('hidden');
-  formPage.classList.add('hidden');
+const showHomeView = () => {
+  show([saveButton, randomButton, homePage]);
+  hide([homeButton, displaySavedCoversPage, formPage]);
 }
 
-function showSavedView() {
-  saveButton.classList.add('hidden');
-  randomButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-  homePage.classList.add('hidden');
-  displaySavedCoversPage.classList.remove('hidden');
-  formPage.classList.add('hidden');
+const showSavedView = () => {
+  show([homeButton, displaySavedCoversPage]);
+  hide([saveButton, randomButton, formPage, homePage]);
 }
 
-function showFormView() {
-  homeButton.classList.remove('hidden');
-  randomButton.classList.add('hidden');
-  saveButton.classList.add('hidden');
-  formPage.classList.remove('hidden');
-  homePage.classList.add('hidden');
-  displaySavedCoversPage.classList.add('hidden');
+const showFormView = () => {
+  show([homeButton, formPage]);
+  hide([randomButton, saveButton, homePage, displaySavedCoversPage]);
 }
 
-function pageLoad() {
-   image.src = covers[getRandomIndex(covers)];
-   bookTitle.innerText = titles[getRandomIndex(titles)];
-   descriptor1.innerText = descriptors[getRandomIndex(descriptors)];
-   descriptor2.innerText = descriptors[getRandomIndex(descriptors)];
- }
 
- function getRandomIndex(array) {
-    return Math.floor(Math.random() * array.length);
- }
+
+
+// // Add your event listeners here 👇
+document.onload = pageLoad();
+randomButton.addEventListener('click', pageLoad);
+homeButton.addEventListener('click', showHomeView);
+makeYourOwnCoverButton.addEventListener('click', showFormView);
+viewSavedButton.addEventListener('click', displaySavedCover);
+makeMyBookButton.addEventListener('click', makeUserCover);
+saveButton.addEventListener('click', showCover);
