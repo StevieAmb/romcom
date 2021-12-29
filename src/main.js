@@ -52,21 +52,19 @@ const randomizeCovers = () => {
 }
 
 const displaySavedCover = () => {
-  displaySavedCoversPage.innerHTML = ""
-  for (var i = 0; i <savedCovers.length; i++) {
+  displaySavedCoversPage.innerHTML = ``;
+  savedCovers.forEach(savedCover => {
     displaySavedCoversPage.innerHTML +=
     `<section class="mini-cover">
-    <img class="cover-image" src="${savedCovers[i].cover}">
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="cover-image" src="${savedCover.cover}">
+    <h2 class="cover-title">${savedCover.title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCover.tagline1}</span> and <span class="tagline-2">${savedCover.tagline2}</span></h3>
     </section>`
-  }
+  })
   showSavedView();
 }
-// makeMyBookButton.addEventListener('click', (event) => {
-// makeUserCover(event)});
 
-const showCover = (event) => {
+const showCover = () => {
   savedCovers.push(currentCover);
   savedCovers.forEach(savedCover => {
     displaySavedCoversPage.innerHTML = ``;
@@ -88,7 +86,7 @@ const pushUserInput = () => {
 }
 
 function makeUserCover(){
-  // event.preventDefault();
+  event.preventDefault();
   console.log(event);
   image.src = inputCover.value;
   bookTitle.innerText = inputTitle.value;
@@ -123,4 +121,5 @@ randomizerButton.addEventListener('click', randomizeCovers);
 homeButton.addEventListener('click', showHomeView);
 makeYourOwnCoverButton.addEventListener('click', showFormView);
 viewSavedButton.addEventListener('click', displaySavedCover);
+makeMyBookButton.addEventListener('click', makeUserCover);
 saveButton.addEventListener('click', showCover);
