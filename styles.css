@@ -98,6 +98,8 @@ body {
 
 /* ~~~~~~~~~~~~~ SAVED COVERS ~~~~~~~~~~~~~~~ */
 .saved-view {
+  display: flex;
+  flex-wrap: wrap;
   padding: 30px;
 }
 
